@@ -35,7 +35,7 @@ dependencies {
 
 publishing {
     publications {
-        shadow<MavenPublication>() {
+        shadow(MavenPublication) {
             from components.java
             artifact shadowJar
         }
