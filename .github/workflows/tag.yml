@@ -18,7 +18,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           release_branches: master,feature/github-ci
       - name: Get Previous tag
-      - uses: oprypin/find-latest-tag@v1
+        uses: oprypin/find-latest-tag@v1
         with:
           repository: ${{ github.ref }}
           prefix: 'v'
