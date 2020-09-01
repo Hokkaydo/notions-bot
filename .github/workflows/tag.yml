@@ -19,6 +19,7 @@ jobs:
           release_branches: master,feature/github-ci
       - name: Get Previous tag
         uses: oprypin/find-latest-tag@v1
+        id: tag
         with:
           repository: ${{ github.repository }}
           prefix: 'v'
