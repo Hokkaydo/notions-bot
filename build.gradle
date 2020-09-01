@@ -12,12 +12,6 @@ plugins {
     id "maven-publish"
 }
 
-shadowJar {
-    baseName = 'NotionsBot'
-    classifier = ''
-}
-
-
 group 'tech.hokkaydo'
 version '1.0-SNAPSHOT'
 
@@ -39,12 +33,10 @@ dependencies {
 }
 
 publishing {
-    publications {
-        shadow(MavenPublication) {
-            from components.shadow
-            artifactId = 'NotionsBot'
-        }
+    shadow(MavenPublication) { publication ->
+        project.shadow.component(publication)
     }
+}
 
     repositories {
         maven {
