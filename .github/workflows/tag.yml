@@ -20,9 +20,8 @@ jobs:
       - name: Get Previous tag
         uses: oprypin/find-latest-tag@v1
         with:
-          repository: ${{ github.ref }}
+          repository: ${{ github.repository }} + "/" + ${{ github.ref }}
           prefix: 'v'
-          id: tag
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Create release
