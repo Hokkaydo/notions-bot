@@ -18,16 +18,17 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           release_branches: master,feature/github-ci
       - name: Get Previous tag
-        id: previoustag
-        uses: WyriHaximus/github-action-get-previous-tag@master
+      - uses: oprypin/find-latest-tag@v1
+        with:
+          repository: ${{ github.ref }}
+          prefix: 'v'
+          id: tag
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Create release
         uses: actions/create-release@v1
         with:
-          tag_name: ${{ steps.previoustag.outputs.tag }}
+          tag_name: ${{ steps.tag.outputs.tag }}
           release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
